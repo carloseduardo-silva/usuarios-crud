@@ -3,6 +3,14 @@
 
 @import "tailwindcss";
 
+.bg-blue-vivid{
+  background-color: #3b83f6e6;
+}
+
+.text-blue-vivid{
+  color: #3b83f6e6;
+}
+
 
 @layer base {
 

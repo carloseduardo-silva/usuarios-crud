@@ -44,8 +44,8 @@ const Login = () => {
 
         <CardHeader className="space-y-1">
           <div className="flex justify-center mb-6">
-            <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center">
-              <User className="h-12 w-12 text-primary" />
+            <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center bg-blue-100">
+              <User className="h-12 w-12 text-primary text-blue-600" />
             </div>
           </div>
           <CardTitle className="text-3xl pb-[11px] font-bold text-center">Login</CardTitle>
@@ -64,7 +64,7 @@ const Login = () => {
                   id="email"
                   type="email"
                   placeholder="seu@email.com" 
-                  className="pl-10"
+                  className="pl-10 mt-1"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -79,13 +79,14 @@ const Login = () => {
                 id="password"
                 type="password" 
                 placeholder="••••••••"
+                className="mt-2"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <Button 
               type="submit" 
-              className="w-full"
+              className="w-full bg-blue-vivid text-white"
               disabled={loading}
             >
               {loading ? "Entrando..." : "Entrar"}
@@ -94,7 +95,7 @@ const Login = () => {
         </CardContent>
 
         <CardFooter className="flex justify-center">
-          <a href="#" className="text-sm font-medium text-primary hover:underline">
+          <a href="#" className="text-sm font-medium text-primary text-blue-vivid hover:underline">
                   Esqueci minha senha
           </a>
         </CardFooter>

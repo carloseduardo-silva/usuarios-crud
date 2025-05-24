@@ -1,6 +1,9 @@
 //hooks
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from '@tanstack/react-query';
+import { login } from "../api/Auth/login";
+
 
 //components
 import { Button } from "../components/ui/button";
@@ -20,6 +23,21 @@ const Login = () => {
   const navigate = useNavigate();
   //#endregion
 
+  //#region Requisição API
+  const {mutateAsync: authenticate} = useMutation({
+    mutationFn:login,
+    onSuccess: (response) => {
+      console.log(response)
+      setLoading(false);
+      navigate("/gerenciar-usuarios");
+     },
+     onError: (error) => {
+       console.error('Error fetching data:', error);
+      
+     }
+   })
+   //#endregion
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -30,12 +48,13 @@ const Login = () => {
     
     setLoading(true);
     
-    // Simulando uma chamada de API
-    setTimeout(() => {
-      setLoading(false);
-      navigate("/gerenciar-usuarios");
-      
-    }, 1000);
+    const formData = {
+      email,
+      password
+    }
+
+    authenticate(formData)
+    
   };
 
   return (

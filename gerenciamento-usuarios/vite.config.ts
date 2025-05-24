@@ -9,4 +9,10 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  server: {
+    port: 3000,
+    proxy: {
+      '/api': 'http://177.136.250.30:3000/',
+    },
+  },
 })

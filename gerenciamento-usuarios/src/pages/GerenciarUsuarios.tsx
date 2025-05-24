@@ -179,7 +179,7 @@ const GerenciarUsuarios = () => {
               />
             </div>
       
-            <div className="rounded-md border">
+            <div className="rounded-md border-1 border-gray-300">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -208,7 +208,7 @@ const GerenciarUsuarios = () => {
                             <Button
                               variant="outline"
                               size="sm"
-                              className="text-destructive bg-red-600! text-white cursor-pointer hover:bg-destructive/10 hover:text-destructive"
+                              className="text-destructive text-red-500 cursor-pointer hover:bg-destructive/10 hover:text-destructive"
                               onClick={() => prepararExclusao(usuario)}
                             >
                               <Trash2 className="h-4 w-4" />

@@ -7,7 +7,6 @@ const Nav = () => {
       <div>
         
       </div>
-
       
         <Link to={"/login"}>
           <LogOut/>

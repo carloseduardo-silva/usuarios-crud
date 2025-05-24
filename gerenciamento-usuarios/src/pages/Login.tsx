@@ -49,7 +49,7 @@ const Login = () => {
             </div>
           </div>
           <CardTitle className="text-3xl pb-[11px] font-bold text-center">Login</CardTitle>
-          <p className="text-center text-muted-foreground">
+          <p className="text-center text-gray-500 text-muted-foreground">
             Entre com suas credenciais para acessar o sistema
           </p>
         </CardHeader>
@@ -86,7 +86,7 @@ const Login = () => {
             </div>
             <Button 
               type="submit" 
-              className="w-full bg-blue-vivid text-white"
+              className="w-full bg-blue-vivid text-white cursor-pointer"
               disabled={loading}
             >
               {loading ? "Entrando..." : "Entrar"}

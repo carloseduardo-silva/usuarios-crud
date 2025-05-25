@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+import { useMutation } from '@tanstack/react-query';
+import { getUsers } from "../api/Users/get-users";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 import {
   Dialog,
@@ -51,6 +53,23 @@ const GerenciarUsuarios = () => {
   
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
+
+  //#region  GET USUARIOS
+
+    const {mutateAsync: getUsuarios} = useMutation({
+    mutationFn:getUsers,
+    onSuccess: (response) => {
+      console.log(response)
+     
+      
+     },
+     onError: (error) => {
+       console.error('Error fetching data:', error);
+      
+     }
+   })
+
+  //#enregion
   
   // Carregar dados iniciais (simulação)
   useEffect(() => {
@@ -62,6 +81,7 @@ const GerenciarUsuarios = () => {
       { id: 5, nome: "Eduarda Santos", email: "eduarda@exemplo.com" },
     ];
     
+    getUsuarios()
     setUsuarios(dadosIniciais);
     setUsuariosFiltrados(dadosIniciais);
   }, []);

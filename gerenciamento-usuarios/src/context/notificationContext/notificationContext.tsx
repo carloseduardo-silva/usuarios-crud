@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState } from 'react';
+import type { ReactNode } from 'react';
 
 type Notification = {
   message: string;
@@ -24,11 +25,16 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     setNotification(null);
   };
 
+  setTimeout(() =>{
+    hideNotification()
+  }, 4500)
+
   return (
     <NotificationContext.Provider value={{ notification, showNotification, hideNotification }}>
       {children}
       {notification && (
         <div
+        className='cursor-pointer'
           style={{
             position: 'fixed',
             bottom: 20,
@@ -41,18 +47,30 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
                 case 'error':
                   return '#f44336';
                 case 'warning':
-                  return '#ff9800';
+                  return '#e7000b';
                 case 'info':
                 default:
-                  return '#2196f3';
+                  return '#ffffff';
               }
             })(),
-            color: 'white',
+            color: (() => {
+              switch (notification.type) {
+                case 'success':
+                  return 'white';
+                case 'error':
+                  return 'white';
+                case 'warning':
+                  return 'white';
+                case 'info':
+                default:
+                  return 'black';
+              }
+            })(),
             borderRadius: 8,
             boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
             zIndex: 1000,
             minWidth: 200,
-            fontWeight: 'bold',
+            fontWeight: 'normal',
           }}
           onClick={hideNotification}
           role="alert"
@@ -68,7 +86,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
 export const useNotification = (): NotificationContextType => {
   const context = useContext(NotificationContext);
   if (!context) {
-    throw new Error('useNotification must be used within a NotificationProvider');
+    throw new Error('Notification error');
   }
   return context;
 };

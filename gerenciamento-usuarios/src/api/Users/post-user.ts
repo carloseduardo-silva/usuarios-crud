@@ -1,16 +1,16 @@
-import { useAuthStore } from "../../stores/useAuthStore"
+import { useAuthStore } from "../../stores/useAuthStore";
 import { api } from "../../lib/axios"
 
-
-export interface UserInterface {
+export interface newUserInterface {
   id: number
   name: string
   email: string
+  password:string,
   createdAt: string
+  companyId: number
   updatedAt?: string
   profile?: string
   tokenVersion?: number
-  companyId?: number
   super?: boolean
   online?: boolean
   endWork?: string
@@ -26,23 +26,19 @@ export interface UserInterface {
   wpp?: string
 }
 
-export interface UsersList{
-    users: UserInterface[]
-}
 
 
 
-export async function getUsers() {
+export async function createUser(newUser: newUserInterface) {
 
-    const {token} = useAuthStore.getState()
+  const {token} = useAuthStore.getState()
 
-  const response = await api.get('/users', {
+  const response = await api.post('/users', newUser, {
      headers:{
         Authorization: `Bearer ${token}`
     },
    })
   
-   
   return response.data
 
  }

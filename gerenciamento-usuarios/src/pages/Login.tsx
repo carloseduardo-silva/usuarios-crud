@@ -105,7 +105,7 @@ const Login = () => {
             </div>
             <Button 
               type="submit" 
-              className="w-full bg-blue-vivid text-white cursor-pointer"
+              className="w-full bg-blue-vivid text-white cursor-pointer hover:bg-blue-600!"
               disabled={loading}
             >
               {loading ? "Entrando..." : "Entrar"}

@@ -26,8 +26,8 @@ const Login = () => {
   //#region Requisição API
   const {mutateAsync: authenticate} = useMutation({
     mutationFn:login,
-    onSuccess: (response) => {
-      console.log(response)
+    onSuccess: () => {
+      
       setLoading(false);
       navigate("/gerenciar-usuarios");
      },
